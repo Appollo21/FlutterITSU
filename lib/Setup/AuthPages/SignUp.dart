@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Setup/AuthPages/LogIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_auth/Setup/Wigets/WidgetButton.dart';
 
 class Register extends StatefulWidget{
   @override
@@ -13,70 +14,105 @@ class _RegisterState extends State<Register>{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: AppBar(
-        ),
-        body: Container(
+        resizeToAvoidBottomInset: false,
+        body: 
+         Container(
+          color: Color.fromRGBO(17,26,33,1),
           child: Form(
           key: _formKey,
-          child: 
-            Center( 
               child:Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text('Registration',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34
-                   ),
-                ),
-                Column( 
-                  children: <Widget>[
-                TextFormField(
-                  validator: (input) {
-                    if(input.isEmpty){
-                      return 'Provide an email';
-                    }
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(),
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child:Text(
+                              "Реєстрація",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(230,26,80,1),
+                                  fontSize: 49,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                            )
+                        ),
+                      Container(
+                        child:Text(
+                              "Створіть акаунт",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(255,255,255,0.42),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                              ),)
+                      ),
+                    ],
                   ),
-                  onSaved: (input) => _email = input,
                 ),
-                SizedBox(height:10),
-                TextFormField(
-                  validator: (input) {
-                    if(input.length < 6){
-                      return 'Longer password please';
-                    }
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(),
-                  ),
-                  onSaved: (input) => _password = input,
-                  obscureText: true,
+                Container(
+                  margin: EdgeInsets.fromLTRB(22,0,22,0),
+                  child:
+                  Card(
+                    color: Color.fromRGBO(25,36,44,1),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.fromLTRB(17,17,17,0),
+                          child:TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              focusColor: Color.fromRGBO(230,26,80,1),
+                              hintText: "Номер телефону або email"
+                            ),
+                          )
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(17,17,17,0),
+                          child:TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              focusColor: Color.fromRGBO(230,26,80,1),
+                              hintText: "Створіть пароль"
+                            ),
+                          )
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(17,17,17,0),
+                          child:TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              focusColor: Color.fromRGBO(230,26,80,1),
+                              hintText: "Підтвердіть пароль"
+                            ),
+                          )
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(17,44,17,17),
+                          child: FitnessButton("Далі",register),
+                        ),
+                      ]
+                  )
                 ),
-                ]
                 ),
-                MaterialButton(
-                    height: 60.0, 
-                    minWidth: 300.0, 
-                    onPressed: register,
-                    color: Colors.red,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-                    child: Text('SIGN UP',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25
+
+                Container(
+                    child: Text(
+                      "Ознайомитися з привилами користування можна Тут!",
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 0.42),
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
                         )
+                      
                     ),
-                  ),
+                )
+
               ],
+              
             ),
-         )
+        
         )
       )
+    
     );
   }
   Future<void> register() async {
