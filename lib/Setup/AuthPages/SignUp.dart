@@ -14,6 +14,35 @@ class _RegisterState extends State<Register>{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          
+          title: Container(margin: EdgeInsets.fromLTRB(0,0,12,0),child: Align(
+            alignment: Alignment.centerRight,
+            child:Text(
+              '1 з 4',
+              style: TextStyle(
+                color: Color.fromRGBO(255,255,255,0.5),
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                ),
+              )
+            ),),
+          leading: IconButton(
+            alignment: Alignment(1.15, 0),
+            icon:  Icon(
+              Icons.arrow_back_ios,
+              color:Color.fromRGBO(255,255,255,0.6),
+              size:16,
+            ),
+            onPressed: (){
+              Navigator.of(context).pop(false);
+            },
+            
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         resizeToAvoidBottomInset: false,
         body: 
          Container(
@@ -25,7 +54,7 @@ class _RegisterState extends State<Register>{
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(33,0,0,0),
+                  margin: EdgeInsets.fromLTRB(33,52,0,0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -134,7 +163,7 @@ class _RegisterState extends State<Register>{
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(17,44,17,17),
-                          child: FitnessButton("Далі",register),
+                          child: FitnessButton("ДАЛІ",register),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
