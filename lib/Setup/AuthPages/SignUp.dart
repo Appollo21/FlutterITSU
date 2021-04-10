@@ -9,7 +9,7 @@ class Register extends StatefulWidget{
 }
 class _RegisterState extends State<Register>{
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String _email, _password, _password2;
 
   @override 
   Widget build(BuildContext context){
@@ -89,9 +89,20 @@ class _RegisterState extends State<Register>{
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.fromLTRB(17,17,17,0),
-                          child:TextField(
+                          child:TextFormField(
+                            onSaved: (input) => _email = input,
+                            validator: (input){
+                              if(input.isEmpty){
+                                return 'Впишіть номер телефону або email';
+                              }
+                            },
                             style: TextStyle(color: Color.fromRGBO(255,255,255,0.42)),
                             decoration: InputDecoration(
+                              errorStyle: TextStyle(
+                                fontSize: 10,
+                                color: Color.fromRGBO(230,26,80,1),
+                                fontWeight: FontWeight.w400,
+                              ),
                               enabledBorder: UnderlineInputBorder(      
                                 borderSide: BorderSide(color: Color.fromRGBO(255,255,255,0.26)),   
                               ),  
@@ -110,7 +121,14 @@ class _RegisterState extends State<Register>{
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(17,17,17,0),
-                          child:TextField(
+                          
+                          child:TextFormField(
+                            validator: (input) {
+                              if(input.length < 6){
+                                return 'Потрібен надійніший пароль';
+                              }
+                            },
+                            onSaved: (input) => _password = input,
                             style: TextStyle(
                               color: Color.fromRGBO(255,255,255,0.42),
                               fontSize:15,
@@ -118,6 +136,11 @@ class _RegisterState extends State<Register>{
                               ),
                             obscureText: true,
                             decoration: InputDecoration(
+                              errorStyle: TextStyle(
+                                fontSize: 10,
+                                color: Color.fromRGBO(230,26,80,1),
+                                fontWeight: FontWeight.w400,
+                              ),
                               enabledBorder: UnderlineInputBorder(      
                                 borderSide: BorderSide(color: Color.fromRGBO(255,255,255,0.26)),   
                               ),  
@@ -137,10 +160,21 @@ class _RegisterState extends State<Register>{
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(17,17,17,0),
-                          child:TextField(
+                          child:TextFormField(
+                            validator: (input) {
+                              if(_password == input){
+                                return 'Паролі не співпадають';
+                              }
+                            },
+                            onSaved: (input) => _password2 = input,
                             style: TextStyle(color: Color.fromRGBO(255,255,255,0.42)),
                             obscureText: true,
                             decoration: InputDecoration(
+                              errorStyle: TextStyle(
+                                fontSize: 10,
+                                color: Color.fromRGBO(230,26,80,1),
+                                fontWeight: FontWeight.w400,
+                              ),
                               enabledBorder: UnderlineInputBorder(      
                                 borderSide: BorderSide(color: Color.fromRGBO(255,255,255,0.26)),   
                               ),  
@@ -250,7 +284,7 @@ class _RegisterState extends State<Register>{
           email: _email,
           password: _password
         );
-        Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginPage()));
+        //Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginPage()));
       }
       catch(e){
         print(e.message);
