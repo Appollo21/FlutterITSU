@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Setup/Pages/WidgetButtomNavBar.dart';
+import 'package:flutter_auth/Setup/Wigets/WidgetButtomNavBar.dart';
 
 class Profile extends StatefulWidget{
   @override
