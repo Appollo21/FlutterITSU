@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:flutter_auth/Setup/Pages/WidgetButtomNavBar.dart';
+import 'package:flutter_auth/Setup/Wigets/WidgetButtomNavBar.dart';
 
 class Calendar extends StatefulWidget{
   @override
